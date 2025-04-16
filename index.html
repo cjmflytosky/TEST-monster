@@ -1,299 +1,136 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
+<html lang="zh-CN" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Survivors | Epic Survival Roguelike Game</title>
-    <link rel="canonical" href="https://selfrelianceand.com/monster-survivors" />
-    <meta name="description" content="Monster Survivors: Survive and conquer in this intense roguelike adventure where every decision matters!">
-    <meta name="keywords" content="Monster Survivors, online game, roguelike, survival game, multiplayer">
+    <title>游戏天地 | 精选在线游戏合集</title>
+    <link rel="canonical" href="https://selfrelianceand.com" />
+    <meta name="description" content="探索精选的高质量在线游戏，从roguelike冒险到战略解谜，尽在游戏天地！">
+    <meta name="keywords" content="在线游戏, roguelike, 生存游戏, 多人游戏">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Monster Survivors - Survive and Thrive">
+    <meta property="og:title" content="游戏天地 - 精选在线游戏合集">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://selfrelianceand.com">
-    <meta property="og:image" content="/game-preview.jpg">
+    <meta property="og:image" content="/assets/images/site-preview.jpg">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
-        /* Fullscreen mode styles */
-        .game-container {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .fullscreen-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 10;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .fullscreen-button:hover {
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-        
-        /* Styles for when the game is in fullscreen mode */
-        .game-fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .game-fullscreen iframe {
-            width: 100%;
-            height: 100%;
-            max-width: none;
-            max-height: none;
-        }
-        
-        .exit-fullscreen {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        
-        .exit-fullscreen:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-        }
-    </style>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTSCGCKCJQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VTSCGCKCJQ');
+    </script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTSCGCKCJQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VTSCGCKCJQ');
-</script>
 <body class="bg-gray-50 text-gray-800 font-sans leading-normal tracking-normal">
-    <!-- Navigation Bar -->
-    <nav class="bg-blue-600 text-white shadow-md">
-        <div class="container mx-auto px-4 py-3 max-w-6xl">
-            <div class="flex items-center justify-between">
-                <!-- Logo and Brand -->
-                <div class="flex items-center space-x-3">
-                    <div class="font-bold text-xl">Monster Survivors</div>
-                </div>
-                
-                <!-- Main Navigation -->
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="#" class="py-2 hover:text-blue-200 transition">Home</a>
-                    <a href="#features" class="py-2 hover:text-blue-200 transition">Features</a>
-                    <a href="#gameplay" class="py-2 hover:text-blue-200 transition">Gameplay</a>
-                    <a href="#updates" class="py-2 hover:text-blue-200 transition">Updates</a>
-                    <a href="#community" class="py-2 hover:text-blue-200 transition">Community</a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden py-3">
-                <a href="#" class="block py-2 hover:text-blue-200 transition">Home</a>
-                <a href="#features" class="block py-2 hover:text-blue-200 transition">Features</a>
-                <a href="#gameplay" class="block py-2 hover:text-blue-200 transition">Gameplay</a>
-                <a href="#updates" class="block py-2 hover:text-blue-200 transition">Updates</a>
-                <a href="#community" class="block py-2 hover:text-blue-200 transition">Community</a>
-            </div>
-        </div>
+    <!-- 导航栏 -->
+    <nav class="bg-blue-600 text-white shadow-md" id="main-navbar">
+        <!-- 导航内容将通过JS动态生成 -->
     </nav>
 
     <div class="container mx-auto px-4 py-8 max-w-6xl">
-        <!-- Search Bar -->
-        <div class="mb-8">
-            <form class="flex items-center max-w-lg mx-auto">
-                <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-search text-gray-400"></i>
-                    </div>
-                    <input type="search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Search game features, guides, updates..." required>
-                </div>
-                <button type="submit" class="inline-flex items-center py-2.5 px-5 ml-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-blue-700 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Search
-                </button>
-            </form>
+        <!-- 搜索栏 -->
+        <div class="mb-8" id="search-container">
+            <!-- 搜索表单将通过JS动态生成 -->
         </div>
 
         <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-blue-600 mb-4">
-                Monster Survivors
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-600 mb-4" data-i18n="site-title">
+                游戏天地
             </h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Survive, evolve, and conquer in this heart-pounding roguelike adventure where every moment tests your strategic prowess!
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-i18n="site-description">
+                探索精选的高质量在线游戏，从roguelike冒险到战略解谜，一应俱全！
             </p>
         </header>
 
         <main>
-            <section id="gameplay" class="bg-white shadow-lg rounded-xl p-6 mb-8">
-                <h2 class="text-3xl font-semibold text-blue-500 mb-4">
-                    Game Overview
+            <!-- 最近玩过的游戏 -->
+            <section id="recent-games" class="bg-white shadow-lg rounded-xl p-6 mb-8 hidden">
+                <h2 class="text-2xl font-semibold text-blue-500 mb-4" data-i18n="recent-games">
+                    最近玩过
                 </h2>
-                <div class="grid md:grid-cols-2 gap-6 items-center">
-                    <div>
-                        <p class="text-gray-700 mb-4">
-                            Monster Survivors is an intense roguelike survival game that challenges players to adapt, strategize, and overcome increasingly difficult monster hordes. Develop unique abilities, collect powerful upgrades, and push your survival skills to the limit.
-                        </p>
-                        <h2 class="text-2xl font-semibold text-blue-500 mb-3">
-                            Key Features
-                        </h2>
-                        <ul class="list-disc list-inside text-gray-600 space-y-2">
-                            <li>Procedurally generated levels</li>
-                            <li>Unique character progression</li>
-                            <li>Intense real-time combat</li>
-                            <li>Multiple strategies to survive</li>
-                        </ul>
-                    </div>
-                    
-                    <div id="game-container" class="game-container rounded-xl overflow-hidden shadow-md">
-                        <button id="fullscreen-button" class="fullscreen-button">
-                            <i class="fas fa-expand"></i> Fullscreen
-                        </button>
-                        <iframe 
-                            id="game-iframe"
-                            src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html"
-                            width="100%" 
-                            height="450" 
-                            frameborder="0" 
-                            allowfullscreen 
-                            class="w-full"
-                        ></iframe>
-                    </div>
+                <div id="recent-games-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- 最近游戏卡片将通过JS动态生成 -->
                 </div>
             </section>
-
-            <section id="features" class="bg-white shadow-lg rounded-xl p-6">
-                <h2 class="text-3xl font-semibold text-blue-500 mb-4">
-                    Why Play Monster Survivors?
+            
+            <!-- 游戏分类 -->
+            <section class="bg-white shadow-lg rounded-xl p-6 mb-8">
+                <h2 class="text-2xl font-semibold text-blue-500 mb-4" data-i18n="game-categories">
+                    游戏分类
                 </h2>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <h3 class="text-xl font-semibold text-blue-600 mb-2">
-                            Endless Replayability
-                        </h3>
-                        <p class="text-gray-700">
-                            No two games are ever the same, ensuring a unique experience every time you play.
-                        </p>
+                <div id="categories-container" class="flex flex-wrap gap-2">
+                    <!-- 分类按钮将通过JS动态生成 -->
+                </div>
+            </section>
+            
+            <!-- 游戏列表 -->
+            <section class="bg-white shadow-lg rounded-xl p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-semibold text-blue-500" data-i18n="featured-games">
+                        精选游戏
+                    </h2>
+                    <div class="flex items-center">
+                        <label for="sort-games" class="mr-2 text-gray-600" data-i18n="sort-by">排序:</label>
+                        <select id="sort-games" class="border rounded px-2 py-1 text-sm">
+                            <option value="newest" data-i18n="sort-newest">最新</option>
+                            <option value="popular" data-i18n="sort-popular">热门</option>
+                            <option value="a-z" data-i18n="sort-a-z">A-Z</option>
+                        </select>
                     </div>
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <h3 class="text-xl font-semibold text-blue-600 mb-2">
-                            Strategic Depth
-                        </h3>
-                        <p class="text-gray-700">
-                            Make critical decisions that determine your survival in a constantly evolving battlefield.
-                        </p>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <h3 class="text-xl font-semibold text-blue-600 mb-2">
-                            Continuous Updates
-                        </h3>
-                        <p class="text-gray-700">
-                            Regular content updates and improvements keep the game fresh and exciting.
-                        </p>
-                    </div>
+                </div>
+                
+                <div id="games-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 游戏卡片将通过JS动态生成 -->
                 </div>
             </section>
         </main>
 
         <footer class="text-center mt-8 py-4 border-t">
+            <div class="mb-3">
+                <select id="language-selector" class="border rounded px-2 py-1 text-sm">
+                    <option value="zh-CN">中文</option>
+                    <option value="en-US">English</option>
+                </select>
+            </div>
             <p class="text-gray-600">
-                © 2025 Monster Survivors. All Rights Reserved.
+                © <span id="current-year"></span> 游戏天地. 保留所有权利.
             </p>
         </footer>
     </div>
 
-    <!-- JavaScript for mobile menu toggle and fullscreen game -->
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
+    <!-- 模态窗口容器 -->
+    <div id="modal-container" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <!-- 模态窗口内容将通过JS动态生成 -->
+    </div>
 
-        // Fullscreen game functionality
-        const gameContainer = document.getElementById('game-container');
-        const gameIframe = document.getElementById('game-iframe');
-        const fullscreenButton = document.getElementById('fullscreen-button');
-        
-        fullscreenButton.addEventListener('click', function() {
-            // Create fullscreen container
-            const fullscreenContainer = document.createElement('div');
-            fullscreenContainer.id = 'fullscreen-container';
-            fullscreenContainer.className = 'game-fullscreen';
-            
-            // Clone the iframe to use in fullscreen mode
-            const fullscreenIframe = gameIframe.cloneNode(true);
-            fullscreenContainer.appendChild(fullscreenIframe);
-            
-            // Create exit fullscreen button
-            const exitButton = document.createElement('button');
-            exitButton.className = 'exit-fullscreen';
-            exitButton.innerHTML = '<i class="fas fa-compress"></i> Exit Fullscreen';
-            fullscreenContainer.appendChild(exitButton);
-            
-            // Add fullscreen container to body
-            document.body.appendChild(fullscreenContainer);
-            
-            // Focus on the iframe to capture keyboard events
-            fullscreenIframe.focus();
-            
-            // Prevent scrolling on the main page
-            document.body.style.overflow = 'hidden';
-            
-            // Exit fullscreen when button is clicked
-            exitButton.addEventListener('click', function() {
-                document.body.removeChild(fullscreenContainer);
-                document.body.style.overflow = '';
-            });
-            
-            // Also exit fullscreen when ESC key is pressed
-            document.addEventListener('keydown', function escKeyHandler(e) {
-                if (e.key === 'Escape') {
-                    if (document.getElementById('fullscreen-container')) {
-                        document.body.removeChild(fullscreenContainer);
-                        document.body.style.overflow = '';
-                    }
-                    document.removeEventListener('keydown', escKeyHandler);
-                }
-            });
-        });
+    <!-- 游戏全屏容器 -->
+    <div id="fullscreen-container" class="hidden fixed inset-0 bg-black z-50">
+        <!-- 全屏游戏内容将通过JS动态生成 -->
+    </div>
+
+    <!-- 加载各个JavaScript模块 -->
+    <script src="/js/games-db.js"></script>
+    <script src="/js/ui-components.js"></script>
+    <script src="/js/game-loader.js"></script>
+    <script src="/js/main.js"></script>
+    
+    <script>
+        // 设置当前年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
