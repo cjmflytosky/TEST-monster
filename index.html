@@ -19,6 +19,75 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Fullscreen mode styles */
+        .game-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fullscreen-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .fullscreen-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Styles for when the game is in fullscreen mode */
+        .game-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .game-fullscreen iframe {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+        }
+        
+        .exit-fullscreen {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .exit-fullscreen:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+    </style>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTSCGCKCJQ"></script>
@@ -30,7 +99,59 @@
   gtag('config', 'G-VTSCGCKCJQ');
 </script>
 <body class="bg-gray-50 text-gray-800 font-sans leading-normal tracking-normal">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 text-white shadow-md">
+        <div class="container mx-auto px-4 py-3 max-w-6xl">
+            <div class="flex items-center justify-between">
+                <!-- Logo and Brand -->
+                <div class="flex items-center space-x-3">
+                    <div class="font-bold text-xl">Monster Survivors</div>
+                </div>
+                
+                <!-- Main Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="py-2 hover:text-blue-200 transition">Home</a>
+                    <a href="#features" class="py-2 hover:text-blue-200 transition">Features</a>
+                    <a href="#gameplay" class="py-2 hover:text-blue-200 transition">Gameplay</a>
+                    <a href="#updates" class="py-2 hover:text-blue-200 transition">Updates</a>
+                    <a href="#community" class="py-2 hover:text-blue-200 transition">Community</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden py-3">
+                <a href="#" class="block py-2 hover:text-blue-200 transition">Home</a>
+                <a href="#features" class="block py-2 hover:text-blue-200 transition">Features</a>
+                <a href="#gameplay" class="block py-2 hover:text-blue-200 transition">Gameplay</a>
+                <a href="#updates" class="block py-2 hover:text-blue-200 transition">Updates</a>
+                <a href="#community" class="block py-2 hover:text-blue-200 transition">Community</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Search Bar -->
+        <div class="mb-8">
+            <form class="flex items-center max-w-lg mx-auto">
+                <div class="relative w-full">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </div>
+                    <input type="search" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Search game features, guides, updates..." required>
+                </div>
+                <button type="submit" class="inline-flex items-center py-2.5 px-5 ml-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-blue-700 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                    Search
+                </button>
+            </form>
+        </div>
+
         <header class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-bold text-blue-600 mb-4">
                 Monster Survivors
@@ -41,7 +162,7 @@
         </header>
 
         <main>
-            <section class="bg-white shadow-lg rounded-xl p-6 mb-8">
+            <section id="gameplay" class="bg-white shadow-lg rounded-xl p-6 mb-8">
                 <h2 class="text-3xl font-semibold text-blue-500 mb-4">
                     Game Overview
                 </h2>
@@ -61,8 +182,12 @@
                         </ul>
                     </div>
                     
-                    <div class="rounded-xl overflow-hidden shadow-md">
+                    <div id="game-container" class="game-container rounded-xl overflow-hidden shadow-md">
+                        <button id="fullscreen-button" class="fullscreen-button">
+                            <i class="fas fa-expand"></i> Fullscreen
+                        </button>
                         <iframe 
+                            id="game-iframe"
                             src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html"
                             width="100%" 
                             height="450" 
@@ -74,7 +199,7 @@
                 </div>
             </section>
 
-            <section class="bg-white shadow-lg rounded-xl p-6">
+            <section id="features" class="bg-white shadow-lg rounded-xl p-6">
                 <h2 class="text-3xl font-semibold text-blue-500 mb-4">
                     Why Play Monster Survivors?
                 </h2>
@@ -113,5 +238,62 @@
             </p>
         </footer>
     </div>
+
+    <!-- JavaScript for mobile menu toggle and fullscreen game -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fullscreen game functionality
+        const gameContainer = document.getElementById('game-container');
+        const gameIframe = document.getElementById('game-iframe');
+        const fullscreenButton = document.getElementById('fullscreen-button');
+        
+        fullscreenButton.addEventListener('click', function() {
+            // Create fullscreen container
+            const fullscreenContainer = document.createElement('div');
+            fullscreenContainer.id = 'fullscreen-container';
+            fullscreenContainer.className = 'game-fullscreen';
+            
+            // Clone the iframe to use in fullscreen mode
+            const fullscreenIframe = gameIframe.cloneNode(true);
+            fullscreenContainer.appendChild(fullscreenIframe);
+            
+            // Create exit fullscreen button
+            const exitButton = document.createElement('button');
+            exitButton.className = 'exit-fullscreen';
+            exitButton.innerHTML = '<i class="fas fa-compress"></i> Exit Fullscreen';
+            fullscreenContainer.appendChild(exitButton);
+            
+            // Add fullscreen container to body
+            document.body.appendChild(fullscreenContainer);
+            
+            // Focus on the iframe to capture keyboard events
+            fullscreenIframe.focus();
+            
+            // Prevent scrolling on the main page
+            document.body.style.overflow = 'hidden';
+            
+            // Exit fullscreen when button is clicked
+            exitButton.addEventListener('click', function() {
+                document.body.removeChild(fullscreenContainer);
+                document.body.style.overflow = '';
+            });
+            
+            // Also exit fullscreen when ESC key is pressed
+            document.addEventListener('keydown', function escKeyHandler(e) {
+                if (e.key === 'Escape') {
+                    if (document.getElementById('fullscreen-container')) {
+                        document.body.removeChild(fullscreenContainer);
+                        document.body.style.overflow = '';
+                    }
+                    document.removeEventListener('keydown', escKeyHandler);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
