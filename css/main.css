@@ -1,0 +1,382 @@
+/* main.css - Primary stylesheet for Self Reliance Games */
+
+/* Base reset and typography */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #007AFF;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.3s ease-in-out;
+}
+
+/* Card hover effects */
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Button hover effects */
+.btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn:hover:after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* Navigation */
+.nav-link {
+  position: relative;
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #007AFF;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover:after {
+  width: 100%;
+}
+
+.nav-link.active:after {
+  width: 100%;
+}
+
+/* Dropdown menu animation */
+.dropdown-menu {
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* Game card styling */
+.game-card {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.game-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.game-card:hover .game-card-overlay {
+  opacity: 1;
+}
+
+.game-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  color: white;
+}
+
+.game-card img {
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Category cards */
+.category-card {
+  aspect-ratio: 4/3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.category-icon {
+  font-size: 3rem;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+  transform: scale(1.1);
+}
+
+/* Star ratings */
+.star-rating {
+  display: inline-flex;
+  color: #FFCC00;
+}
+
+.star-empty {
+  color: #E5E7EB;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-new {
+  background-color: #34C759;
+  color: white;
+}
+
+.badge-hot {
+  background-color: #FF3B30;
+  color: white;
+}
+
+.badge-popular {
+  background-color: #5856D6;
+  color: white;
+}
+
+/* Form elements */
+input, textarea, select {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #007AFF;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #007AFF;
+  color: white;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #007AFF;
+  border: 1px solid #007AFF;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #007AFF;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.875rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Apple-like focus styles */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.5);
+  border-radius: 2px;
+}
+
+/* Accessibility improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Social media icons */
+.social-icon {
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Footer styling */
+footer a {
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #007AFF;
+}
+
+/* Apple color palette helper classes */
+.bg-apple-blue { background-color: #007AFF; }
+.bg-apple-green { background-color: #34C759; }
+.bg-apple-indigo { background-color: #5856D6; }
+.bg-apple-orange { background-color: #FF9500; }
+.bg-apple-pink { background-color: #FF2D55; }
+.bg-apple-purple { background-color: #AF52DE; }
+.bg-apple-red { background-color: #FF3B30; }
+.bg-apple-teal { background-color: #5AC8FA; }
+.bg-apple-yellow { background-color: #FFCC00; }
+
+.text-apple-blue { color: #007AFF; }
+.text-apple-green { color: #34C759; }
+.text-apple-indigo { color: #5856D6; }
+.text-apple-orange { color: #FF9500; }
+.text-apple-pink { color: #FF2D55; }
+.text-apple-purple { color: #AF52DE; }
+.text-apple-red { color: #FF3B30; }
+.text-apple-teal { color: #5AC8FA; }
+.text-apple-yellow { color: #FFCC00; }
+
+.border-apple-blue { border-color: #007AFF; }
+.border-apple-green { border-color: #34C759; }
+.border-apple-indigo { border-color: #5856D6; }
+.border-apple-orange { border-color: #FF9500; }
+.border-apple-pink { border-color: #FF2D55; }
+.border-apple-purple { border-color: #AF52DE; }
+.border-apple-red { border-color: #FF3B30; }
+.border-apple-teal { border-color: #5AC8FA; }
+.border-apple-yellow { border-color: #FFCC00; }
+
+/* Custom gradient backgrounds */
+.bg-gradient-blue-purple {
+  background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+}
+
+.bg-gradient-green-blue {
+  background: linear-gradient(135deg, #34C759 0%, #5AC8FA 100%);
+}
+
+.bg-gradient-orange-red {
+  background: linear-gradient(135deg, #FF9500 0%, #FF3B30 100%);
+}
+
+.bg-gradient-pink-purple {
+  background: linear-gradient(135deg, #FF2D55 0%, #AF52DE 100%);
+}
