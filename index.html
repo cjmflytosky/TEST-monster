@@ -1,136 +1,865 @@
 <!DOCTYPE html>
-<html lang="zh-CN" prefix="og: http://ogp.me/ns#">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>游戏天地 | 精选在线游戏合集</title>
-    <link rel="canonical" href="https://selfrelianceand.com" />
-    <meta name="description" content="探索精选的高质量在线游戏，从roguelike冒险到战略解谜，尽在游戏天地！">
-    <meta name="keywords" content="在线游戏, roguelike, 生存游戏, 多人游戏">
+    <title>Self Reliance Games - Play Free Online Games</title>
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="游戏天地 - 精选在线游戏合集">
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Play free online games instantly! Self Reliance Games offers a huge collection of browser games across various categories with no downloads required.">
+    <meta name="keywords" content="online games, free games, browser games, no download games, HTML5 games, action games, puzzle games, strategy games">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Self Reliance Games - Play Free Online Games">
+    <meta property="og:description" content="Play free online games instantly! Self Reliance Games offers a huge collection of browser games across various categories with no downloads required.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://selfrelianceand.com">
-    <meta property="og:image" content="/assets/images/site-preview.jpg">
+    <meta property="og:image" content="https://selfrelianceand.com/assets/images/site-preview.jpg">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://selfrelianceand.com">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
     
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- 自定义样式 -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Apple color palette
+                        'apple-blue': '#007AFF',
+                        'apple-green': '#34C759',
+                        'apple-indigo': '#5856D6',
+                        'apple-orange': '#FF9500',
+                        'apple-pink': '#FF2D55',
+                        'apple-purple': '#AF52DE',
+                        'apple-red': '#FF3B30',
+                        'apple-teal': '#5AC8FA',
+                        'apple-yellow': '#FFCC00'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="/css/main.css">
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTSCGCKCJQ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-VTSCGCKCJQ');
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Self Reliance Games",
+      "url": "https://selfrelianceand.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://selfrelianceand.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "description": "Play free online games instantly with no downloads required. Collection includes action, puzzle, strategy, and many more game categories."
+    }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans leading-normal tracking-normal">
-    <!-- 导航栏 -->
-    <nav class="bg-blue-600 text-white shadow-md" id="main-navbar">
-        <!-- 导航内容将通过JS动态生成 -->
-    </nav>
-
-    <div class="container mx-auto px-4 py-8 max-w-6xl">
-        <!-- 搜索栏 -->
-        <div class="mb-8" id="search-container">
-            <!-- 搜索表单将通过JS动态生成 -->
-        </div>
-
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-blue-600 mb-4" data-i18n="site-title">
-                游戏天地
-            </h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-i18n="site-description">
-                探索精选的高质量在线游戏，从roguelike冒险到战略解谜，一应俱全！
-            </p>
-        </header>
-
-        <main>
-            <!-- 最近玩过的游戏 -->
-            <section id="recent-games" class="bg-white shadow-lg rounded-xl p-6 mb-8 hidden">
-                <h2 class="text-2xl font-semibold text-blue-500 mb-4" data-i18n="recent-games">
-                    最近玩过
-                </h2>
-                <div id="recent-games-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- 最近游戏卡片将通过JS动态生成 -->
-                </div>
-            </section>
-            
-            <!-- 游戏分类 -->
-            <section class="bg-white shadow-lg rounded-xl p-6 mb-8">
-                <h2 class="text-2xl font-semibold text-blue-500 mb-4" data-i18n="game-categories">
-                    游戏分类
-                </h2>
-                <div id="categories-container" class="flex flex-wrap gap-2">
-                    <!-- 分类按钮将通过JS动态生成 -->
-                </div>
-            </section>
-            
-            <!-- 游戏列表 -->
-            <section class="bg-white shadow-lg rounded-xl p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-2xl font-semibold text-blue-500" data-i18n="featured-games">
-                        精选游戏
-                    </h2>
-                    <div class="flex items-center">
-                        <label for="sort-games" class="mr-2 text-gray-600" data-i18n="sort-by">排序:</label>
-                        <select id="sort-games" class="border rounded px-2 py-1 text-sm">
-                            <option value="newest" data-i18n="sort-newest">最新</option>
-                            <option value="popular" data-i18n="sort-popular">热门</option>
-                            <option value="a-z" data-i18n="sort-a-z">A-Z</option>
-                        </select>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+            <div class="flex justify-between h-16">
+                <!-- Logo and Site Title -->
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img class="h-8 w-auto sm:h-10" src="/assets/images/logo.png" alt="Self Reliance Games">
+                            <span class="ml-2 text-xl font-bold text-gray-900 hidden sm:block">Self Reliance Games</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Navigation Links -->
+                    <div class="hidden md:ml-8 md:flex md:space-x-6">
+                        <a href="/" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-apple-blue">
+                            Home
+                        </a>
+                        <div class="relative group">
+                            <button class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300 group-hover:text-gray-900">
+                                Categories
+                                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <div class="absolute left-0 z-10 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 hidden group-hover:block">
+                                <a href="/categories/action" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Action</a>
+                                <a href="/categories/puzzle" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Puzzle</a>
+                                <a href="/categories/strategy" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Strategy</a>
+                                <a href="/categories/arcade" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Arcade</a>
+                                <a href="/categories/adventure" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Adventure</a>
+                                <a href="/categories/rpg" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">RPG</a>
+                                <a href="/categories/simulation" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Simulation</a>
+                                <a href="/categories/casual" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Casual</a>
+                                <div class="border-t border-gray-100 my-1"></div>
+                                <a href="/categories" class="block px-4 py-2 text-sm text-apple-blue hover:bg-gray-100">All Categories</a>
+                            </div>
+                        </div>
+                        <a href="/popular" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300">
+                            Popular
+                        </a>
+                        <a href="/new" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300">
+                            New Games
+                        </a>
+                        <a href="/random" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300">
+                            Random Game
+                        </a>
                     </div>
                 </div>
                 
-                <div id="games-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- 游戏卡片将通过JS动态生成 -->
+                <!-- Search Bar -->
+                <div class="flex-1 flex items-center justify-center px-2 md:px-0 md:ml-6 md:justify-end">
+                    <div class="w-full max-w-lg lg:max-w-xs">
+                        <label for="search" class="sr-only">Search games</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input id="search" name="search" placeholder="Search games..." class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-apple-blue focus:border-apple-blue sm:text-sm">
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </main>
-
-        <footer class="text-center mt-8 py-4 border-t">
-            <div class="mb-3">
-                <select id="language-selector" class="border rounded px-2 py-1 text-sm">
-                    <option value="zh-CN">中文</option>
-                    <option value="en-US">English</option>
-                </select>
+                
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-apple-blue" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Icon when menu is closed -->
+                        <svg id="menu-closed-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Icon when menu is open -->
+                        <svg id="menu-open-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <p class="text-gray-600">
-                © <span id="current-year"></span> 游戏天地. 保留所有权利.
-            </p>
-        </footer>
-    </div>
+        </nav>
 
-    <!-- 模态窗口容器 -->
-    <div id="modal-container" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-        <!-- 模态窗口内容将通过JS动态生成 -->
-    </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="/" class="bg-apple-blue-50 border-apple-blue text-apple-blue block pl-3 pr-4 py-2 border-l-4 font-medium">Home</a>
+                
+                <!-- Mobile Categories Accordion -->
+                <div class="mobile-accordion">
+                    <button class="mobile-accordion-button w-full text-left border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 font-medium flex justify-between items-center">
+                        <span>Categories</span>
+                        <svg class="h-5 w-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="mobile-accordion-content hidden pl-7 pr-3 py-2">
+                        <div class="space-y-1">
+                            <a href="/categories/action" class="block py-2 text-gray-600 hover:text-gray-900">Action</a>
+                            <a href="/categories/puzzle" class="block py-2 text-gray-600 hover:text-gray-900">Puzzle</a>
+                            <a href="/categories/strategy" class="block py-2 text-gray-600 hover:text-gray-900">Strategy</a>
+                            <a href="/categories/arcade" class="block py-2 text-gray-600 hover:text-gray-900">Arcade</a>
+                            <a href="/categories/adventure" class="block py-2 text-gray-600 hover:text-gray-900">Adventure</a>
+                            <a href="/categories/rpg" class="block py-2 text-gray-600 hover:text-gray-900">RPG</a>
+                            <a href="/categories/simulation" class="block py-2 text-gray-600 hover:text-gray-900">Simulation</a>
+                            <a href="/categories/casual" class="block py-2 text-gray-600 hover:text-gray-900">Casual</a>
+                            <a href="/categories" class="block py-2 text-apple-blue">All Categories</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="/popular" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 font-medium">Popular</a>
+                <a href="/new" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 font-medium">New Games</a>
+                <a href="/random" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 font-medium">Random Game</a>
+            </div>
+            
+            <!-- Mobile Search -->
+            <div class="pt-2 pb-3 px-4">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <input id="mobile-search" name="mobile-search" placeholder="Search games..." class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-apple-blue focus:border-apple-blue sm:text-sm">
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <!-- 游戏全屏容器 -->
-    <div id="fullscreen-container" class="hidden fixed inset-0 bg-black z-50">
-        <!-- 全屏游戏内容将通过JS动态生成 -->
-    </div>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative bg-apple-blue text-white">
+            <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                    <div>
+                        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                            Play Free Games Online
+                        </h1>
+                        <p class="mt-4 text-xl text-blue-100">
+                            Discover hundreds of free online games you can play right in your browser. No downloads required, just click and play!
+                        </p>
+                        <div class="mt-8 flex space-x-4">
+                            <a href="/popular" class="inline-flex items-center px-5 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-apple-blue bg-white hover:bg-blue-50 transition-colors duration-300">
+                                Popular Games
+                            </a>
+                            <a href="/random" class="inline-flex items-center px-5 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-blue-700 transition-colors duration-300">
+                                Random Game
+                                <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-10 lg:mt-0 relative">
+                        <div class="relative mx-auto w-full rounded-lg shadow-lg overflow-hidden">
+                            <img class="w-full h-auto" src="/assets/images/hero-image.jpg" alt="Collection of games">
+                            <div class="absolute inset-0 bg-gradient-to-r from-apple-blue opacity-30"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black bg-opacity-60">
+                                <div class="flex items-center">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-apple-red text-white">
+                                        Hot Game
+                                    </span>
+                                    <span class="ml-2 text-sm text-white font-medium">Try the latest and most popular games!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Featured Games -->
+        <section class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Featured Games</h2>
+                    <a href="/popular" class="hidden sm:block text-sm font-semibold text-apple-blue hover:text-apple-blue-dark">
+                        View all games <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+                
+                <div class="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Featured Game 1 -->
+                    <a href="/games/play.html?id=game1" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                            <img class="w-full h-48 object-cover" src="/assets/images/games/featured-1.jpg" alt="Game 1">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-lg font-semibold text-white">Space Adventure</h3>
+                                <p class="mt-1 text-sm text-gray-300">Action</p>
+                                <div class="mt-2 flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-300">5.0 (124)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Featured Game 2 -->
+                    <a href="/games/play.html?id=game2" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                            <img class="w-full h-48 object-cover" src="/assets/images/games/featured-2.jpg" alt="Game 2">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-lg font-semibold text-white">Puzzle Master</h3>
+                                <p class="mt-1 text-sm text-gray-300">Puzzle</p>
+                                <div class="mt-2 flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-300">4.8 (98)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Featured Game 3 -->
+                    <a href="/games/play.html?id=game3" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                            <img class="w-full h-48 object-cover" src="/assets/images/games/featured-3.jpg" alt="Game 3">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-lg font-semibold text-white">Strategy Commander</h3>
+                                <p class="mt-1 text-sm text-gray-300">Strategy</p>
+                                <div class="mt-2 flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-300">4.0 (85)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Featured Game 4 -->
+                    <a href="/games/play.html?id=game4" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                            <img class="w-full h-48 object-cover" src="/assets/images/games/featured-4.jpg" alt="Game 4">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-lg font-semibold text-white">Arcade Classic</h3>
+                                <p class="mt-1 text-sm text-gray-300">Arcade</p>
+                                <div class="mt-2 flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                    </div>
+                                    <span class="ml-2 text-xs text-gray-300">4.0 (112)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="mt-6 text-center sm:hidden">
+                    <a href="/popular" class="inline-flex items-center text-sm font-semibold text-apple-blue hover:text-apple-blue-dark">
+                        View all games <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Game Categories Section -->
+        <section class="py-12 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        Game Categories
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                        Explore our collection of games across different genres
+                    </p>
+                </div>
 
-    <!-- 加载各个JavaScript模块 -->
-    <script src="/js/games-db.js"></script>
-    <script src="/js/ui-components.js"></script>
-    <script src="/js/game-loader.js"></script>
-    <script src="/js/main.js"></script>
+                <div class="mt-12 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Action Category -->
+                    <a href="/categories/action" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="w-full aspect-[4/3] bg-gradient-to-br from-apple-red to-red-600 flex items-center justify-center">
+                                <i class="fas fa-bolt text-white text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-xl font-semibold text-white">Action</h3>
+                                <p class="mt-1 text-sm text-gray-200">Fast-paced games requiring quick reflexes</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Puzzle Category -->
+                    <a href="/categories/puzzle" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="w-full aspect-[4/3] bg-gradient-to-br from-apple-purple to-purple-600 flex items-center justify-center">
+                                <i class="fas fa-puzzle-piece text-white text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-xl font-semibold text-white">Puzzle</h3>
+                                <p class="mt-1 text-sm text-gray-200">Brain teasers and logic games</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Strategy Category -->
+                    <a href="/categories/strategy" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="w-full aspect-[4/3] bg-gradient-to-br from-apple-blue to-blue-600 flex items-center justify-center">
+                                <i class="fas fa-chess text-white text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-xl font-semibold text-white">Strategy</h3>
+                                <p class="mt-1 text-sm text-gray-200">Plan, think ahead, and outsmart opponents</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Arcade Category -->
+                    <a href="/categories/arcade" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="w-full aspect-[4/3] bg-gradient-to-br from-apple-orange to-orange-600 flex items-center justify-center">
+                                <i class="fas fa-gamepad text-white text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-xl font-semibold text-white">Arcade</h3>
+                                <p class="mt-1 text-sm text-gray-200">Classic arcade-style games</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="mt-6 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Adventure Category -->
+                    <a href="/categories/adventure" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="w-full aspect-[4/3] bg-gradient-to-br from-apple-green to-green-600 flex items-center justify-center">
+                                <i class="fas fa-map-signs text-white text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-xl font-semibold text-white">Adventure</h3>
+                                <p class="mt-1 text-sm text-gray-200">Journey through immersive worlds</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- RPG Category -->
+                    <a href="/categories/rpg" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="w-full aspect-[4/3] bg-gradient-to-br from-apple-teal to-blue-500 flex items-center justify-center">
+                                <i class="fas fa-hat-wizard text-white text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-xl font-semibold text-white">RPG</h3>
+                                <p class="mt-1 text-sm text-gray-200">Role-playing games with character progression</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Simulation Category -->
+                    <a href="/categories/simulation" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="w-full aspect-[4/3] bg-gradient-to-br from-apple-green to-green-500 flex items-center justify-center">
+                                <i class="fas fa-city text-white text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-xl font-semibold text-white">Simulation</h3>
+                                <p class="mt-1 text-sm text-gray-200">Experience realistic scenarios</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Casual Category -->
+                    <a href="/categories/casual" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="w-full aspect-[4/3] bg-gradient-to-br from-apple-pink to-pink-600 flex items-center justify-center">
+                                <i class="fas fa-coffee text-white text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-xl font-semibold text-white">Casual</h3>
+                                <p class="mt-1 text-sm text-gray-200">Relaxing games for quick play sessions</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="mt-10 text-center">
+                    <a href="/categories" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-apple-blue hover:bg-blue-700 transition-colors duration-300">
+                        View All Categories
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- New Games Section -->
+        <section class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <h2 class="text-2xl font-bold tracking-tight text-gray-900">New Games</h2>
+                    <a href="/new" class="hidden sm:block text-sm font-semibold text-apple-blue hover:text-apple-blue-dark">
+                        View all new games <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+                
+                <div class="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- New Game 1 -->
+                    <a href="/games/play.html?id=new1" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                            <img class="w-full h-48 object-cover" src="/assets/images/games/new-1.jpg" alt="New Game 1">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 opacity-70"></div>
+                            <div class="absolute top-0 right-0 m-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-apple-green text-white">
+                                    New
+                                </span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-lg font-semibold text-white">Fantasy Quest</h3>
+                                <p class="mt-1 text-sm text-gray-300">Adventure</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- New Game 2 -->
+                    <a href="/games/play.html?id=new2" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                            <img class="w-full h-48 object-cover" src="/assets/images/games/new-2.jpg" alt="New Game 2">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 opacity-70"></div>
+                            <div class="absolute top-0 right-0 m-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-apple-green text-white">
+                                    New
+                                </span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-lg font-semibold text-white">Block Builder</h3>
+                                <p class="mt-1 text-sm text-gray-300">Puzzle</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- New Game 3 -->
+                    <a href="/games/play.html?id=new3" class="group">
+<div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                            <img class="w-full h-48 object-cover" src="/assets/images/games/new-3.jpg" alt="New Game 3">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 opacity-70"></div>
+                            <div class="absolute top-0 right-0 m-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-apple-green text-white">
+                                    New
+                                </span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-lg font-semibold text-white">Racing Evolved</h3>
+                                <p class="mt-1 text-sm text-gray-300">Action</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- New Game 4 -->
+                    <a href="/games/play.html?id=new4" class="group">
+                        <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                            <img class="w-full h-48 object-cover" src="/assets/images/games/new-4.jpg" alt="New Game 4">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 opacity-70"></div>
+                            <div class="absolute top-0 right-0 m-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-apple-green text-white">
+                                    New
+                                </span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 class="text-lg font-semibold text-white">Space Colony</h3>
+                                <p class="mt-1 text-sm text-gray-300">Simulation</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="mt-6 text-center sm:hidden">
+                    <a href="/new" class="inline-flex items-center text-sm font-semibold text-apple-blue hover:text-apple-blue-dark">
+                        View all new games <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="bg-apple-blue py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold tracking-tight text-white">
+                            Share the Fun with Friends
+                        </h2>
+                        <p class="mt-4 text-lg text-blue-100">
+                            Discover new games, challenge your friends, and climb the leaderboards together.
+                        </p>
+                        <div class="mt-8">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-white hover:text-blue-200">
+                                    <span class="sr-only">Facebook</span>
+                                    <i class="fab fa-facebook-square text-3xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-blue-200">
+                                    <span class="sr-only">Twitter</span>
+                                    <i class="fab fa-twitter-square text-3xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-blue-200">
+                                    <span class="sr-only">Instagram</span>
+                                    <i class="fab fa-instagram-square text-3xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-blue-200">
+                                    <span class="sr-only">Discord</span>
+                                    <i class="fab fa-discord text-3xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10 lg:mt-0">
+                        <form class="sm:flex">
+                            <label for="email-address" class="sr-only">Email address</label>
+                            <input id="email-address" name="email-address" type="email" autocomplete="email" required class="w-full px-5 py-3 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-apple-blue focus:ring-white rounded-md" placeholder="Enter your email">
+                            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+                                <button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-apple-blue bg-white hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-apple-blue focus:ring-white">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                        <p class="mt-3 text-sm text-blue-100">
+                            Sign up for our newsletter to get the latest game updates. We care about your data in our <a href="/privacy" class="text-white font-medium underline">privacy policy</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     
+    <!-- Footer -->
+    <footer class="bg-white" aria-labelledby="footer-heading">
+        <h2 id="footer-heading" class="sr-only">Footer</h2>
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div class="space-y-8 xl:col-span-1">
+                    <div class="flex items-center">
+                        <img class="h-10 w-auto" src="/assets/images/logo.png" alt="Self Reliance Games">
+                        <span class="ml-3 text-xl font-bold text-gray-900">Self Reliance Games</span>
+                    </div>
+                    <p class="text-gray-500 text-base">
+                        The best collection of free online games that you can play directly in your browser without any downloads.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">Facebook</span>
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">Twitter</span>
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">Instagram</span>
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">Discord</span>
+                            <i class="fab fa-discord text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                                Games
+                            </h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li>
+                                    <a href="/categories/action" class="text-base text-gray-500 hover:text-gray-900">
+                                        Action
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/categories/puzzle" class="text-base text-gray-500 hover:text-gray-900">
+                                        Puzzle
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/categories/strategy" class="text-base text-gray-500 hover:text-gray-900">
+                                        Strategy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/categories/arcade" class="text-base text-gray-500 hover:text-gray-900">
+                                        Arcade
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/categories" class="text-base text-gray-500 hover:text-gray-900">
+                                        All Categories
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                                Discover
+                            </h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li>
+                                    <a href="/popular" class="text-base text-gray-500 hover:text-gray-900">
+                                        Popular Games
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/new" class="text-base text-gray-500 hover:text-gray-900">
+                                        New Games
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/random" class="text-base text-gray-500 hover:text-gray-900">
+                                        Random Game
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/trending" class="text-base text-gray-500 hover:text-gray-900">
+                                        Trending Now
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                                Support
+                            </h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li>
+                                    <a href="/help" class="text-base text-gray-500 hover:text-gray-900">
+                                        Help Center
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/faq" class="text-base text-gray-500 hover:text-gray-900">
+                                        FAQs
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/contact" class="text-base text-gray-500 hover:text-gray-900">
+                                        Contact Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/feedback" class="text-base text-gray-500 hover:text-gray-900">
+                                        Feedback
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                                Legal
+                            </h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li>
+                                    <a href="/privacy" class="text-base text-gray-500 hover:text-gray-900">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/terms" class="text-base text-gray-500 hover:text-gray-900">
+                                        Terms of Service
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/cookies" class="text-base text-gray-500 hover:text-gray-900">
+                                        Cookie Policy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/dmca" class="text-base text-gray-500 hover:text-gray-900">
+                                        DMCA
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-200 pt-8">
+                <p class="text-base text-gray-400 xl:text-center">
+                    &copy; <span id="current-year"></span> Self Reliance Games. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mobile Menu JavaScript -->
     <script>
-        // 设置当前年份
+        // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuClosedIcon = document.getElementById('menu-closed-icon');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !expanded);
+                mobileMenu.classList.toggle('hidden');
+                menuClosedIcon.classList.toggle('hidden');
+                menuOpenIcon.classList.toggle('hidden');
+            });
+            
+            // Mobile accordion toggle
+            const accordionButtons = document.querySelectorAll('.mobile-accordion-button');
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('svg');
+                    
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+        });
     </script>
 </body>
 </html>
