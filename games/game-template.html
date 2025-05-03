@@ -1,234 +1,326 @@
 <!DOCTYPE html>
-<html lang="zh-CN" prefix="og: http://ogp.me/ns#">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[游戏名称] | 游戏天地</title>
-    <link rel="canonical" href="https://selfrelianceand.com/games/[game-id]" />
-    <meta name="description" content="[游戏描述]">
-    <meta name="keywords" content="[游戏名称], 在线游戏, [游戏类别]">
+    <title>Monster Survivors - Free Online Survival Game | SelfRelianceAnd</title>
+    <meta name="description" content="Play Monster Survivors online for free! Fight waves of monsters, upgrade your character, and survive as long as possible in this thrilling action game.">
+    <meta name="keywords" content="Monster Survivors, online game, survival game, action game, free browser game, monster game">
+    <link rel="canonical" href="https://selfrelianceand.com/monster-survivors">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="[游戏名称] - 游戏天地">
+    <meta property="og:title" content="Monster Survivors - Free Online Survival Game">
+    <meta property="og:description" content="Fight waves of monsters and survive in this thrilling action game. Play now for free!">
+    <meta property="og:url" content="https://selfrelianceand.com/monster-survivors">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://selfrelianceand.com/games/[game-id]">
-    <meta property="og:image" content="[游戏预览图URL]">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Monster Survivors - Free Online Survival Game">
+    <meta name="twitter:description" content="Fight waves of monsters and survive in this thrilling action game. Play now for free!">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- 自定义样式 -->
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/game.css">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTSCGCKCJQ"></script>
+    <!-- Custom Tailwind Configuration -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-VTSCGCKCJQ');
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-gray': '#F5F5F7',
+                        'apple-dark': '#1D1D1F',
+                        'apple-blue': '#0071E3',
+                        'apple-light-blue': '#64D2FF',
+                        'apple-text': '#333336'
+                    }
+                }
+            }
+        }
     </script>
+    
+    <style>
+        /* Custom scrollbar for better UX */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Fullscreen game container */
+        .game-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+        }
+        
+        .game-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .game-container.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 0;
+            z-index: 9999;
+            background: #000;
+        }
+        
+        .game-container.fullscreen iframe {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans leading-normal tracking-normal">
-    <!-- 导航栏 -->
-    <nav class="bg-blue-600 text-white shadow-md" id="main-navbar">
-        <!-- 导航内容将通过JS动态生成 -->
+<body class="bg-apple-gray text-apple-text">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-xl font-bold text-apple-dark">SelfRelianceAnd</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-apple-text hover:text-apple-blue transition">Home</a>
+                    <a href="#about" class="text-apple-text hover:text-apple-blue transition">About Game</a>
+                    <a href="#gameplay" class="text-apple-text hover:text-apple-blue transition">Gameplay</a>
+                    <a href="#features" class="text-apple-text hover:text-apple-blue transition">Features</a>
+                </div>
+            </div>
+        </div>
     </nav>
 
-    <div class="container mx-auto px-4 py-8 max-w-6xl">
-        <!-- 面包屑导航 -->
-        <div class="breadcrumbs text-sm text-gray-600 mb-6">
-            <a href="/" class="hover:text-blue-600">首页</a> &gt; 
-            <a href="/#games" class="hover:text-blue-600">游戏</a> &gt; 
-            <span class="text-gray-800 game-title">[游戏名称]</span>
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-apple-blue to-apple-light-blue text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Monster Survivors</h1>
+            <p class="text-xl md:text-2xl mb-8">Survive endless waves of monsters in this thrilling action-packed adventure!</p>
+            <a href="#game" class="bg-white text-apple-blue px-8 py-3 rounded-full font-semibold hover:bg-apple-gray transition">
+                Play Now
+            </a>
         </div>
+    </header>
 
-        <header class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-blue-600 mb-2 game-title">[游戏名称]</h1>
-            <p class="text-gray-500">
-                <span class="game-category">[游戏类别]</span> | 
-                <span class="game-difficulty">[难度]</span> | 
-                <span class="game-added-date">添加于: [日期]</span>
-            </p>
-        </header>
+    <!-- Game Section -->
+    <section id="game" class="max-w-7xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-lg shadow-lg p-4 md:p-8">
+            <div class="game-container" id="gameContainer">
+                <iframe 
+                    src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html"
+                    allowfullscreen
+                    title="Monster Survivors Game"
+                    scrolling="no"
+                ></iframe>
+            </div>
+            <div class="mt-4 text-center">
+                <button 
+                    id="fullscreenBtn"
+                    class="bg-apple-blue text-white px-6 py-2 rounded-full hover:bg-blue-600 transition"
+                >
+                    🖥️ Fullscreen
+                </button>
+            </div>
+        </div>
+    </section>
 
-        <main>
-            <section class="bg-white shadow-lg rounded-xl overflow-hidden mb-8">
-                <!-- 游戏容器 -->
-                <div id="game-container" class="game-container relative">
-                    <div class="game-controls absolute top-2 right-2 z-10 flex space-x-2">
-                        <button id="fullscreen-button" class="game-control-btn" title="全屏模式">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                        <button id="mute-button" class="game-control-btn" title="静音">
-                            <i class="fas fa-volume-up"></i>
-                        </button>
-                        <button id="refresh-button" class="game-control-btn" title="重新加载">
-                            <i class="fas fa-redo"></i>
-                        </button>
-                    </div>
-                    
-                    <!-- 游戏加载指示器 -->
-                    <div id="game-loading" class="game-loading">
-                        <div class="spinner"></div>
-                        <p>游戏加载中...</p>
-                    </div>
-                    
-                    <!-- 游戏iframe -->
-                    <iframe 
-                        id="game-iframe"
-                        src=""
-                        width="100%" 
-                        height="600" 
-                        frameborder="0" 
-                        allowfullscreen 
-                        class="w-full"
-                    ></iframe>
+    <!-- About Section -->
+    <section id="about" class="bg-white py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">About Monster Survivors</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">The Ultimate Survival Challenge</h3>
+                    <p class="text-lg mb-4">
+                        Monster Survivors is an intense action survival game where you face endless waves of increasingly powerful monsters. Armed with an arsenal of weapons and abilities, you must strategize, adapt, and survive against overwhelming odds.
+                    </p>
+                    <p class="text-lg">
+                        Every decision matters as you upgrade your character, choose your weapons, and master the art of survival. How long can you last against the monster horde?
+                    </p>
                 </div>
-            </section>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- 游戏介绍 -->
-                <section class="md:col-span-2 bg-white shadow-lg rounded-xl p-6">
-                    <h2 class="text-2xl font-semibold text-blue-500 mb-4">游戏介绍</h2>
-                    <div class="game-description text-gray-700 mb-6">
-                        [游戏描述]
-                    </div>
-                    
-                    <h3 class="text-xl font-semibold text-blue-500 mb-3">游戏特点</h3>
-                    <ul class="game-features list-disc list-inside text-gray-600 space-y-2 mb-6">
-                        <!-- 游戏特点列表将通过JS填充 -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Key Features</h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-center">
+                            <span class="text-apple-blue mr-2">✓</span>
+                            Endless waves of diverse monsters
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-apple-blue mr-2">✓</span>
+                            Character progression and upgrades
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-apple-blue mr-2">✓</span>
+                            Multiple weapons and abilities
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-apple-blue mr-2">✓</span>
+                            Strategic gameplay and resource management
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-apple-blue mr-2">✓</span>
+                            Dynamic difficulty scaling
+                        </li>
                     </ul>
-                    
-                    <h3 class="text-xl font-semibold text-blue-500 mb-3">操作指南</h3>
-                    <div class="game-controls-guide text-gray-700">
-                        <p>使用 WASD 或方向键移动，鼠标点击进行交互。更多详细操作将根据具体游戏显示。</p>
-                    </div>
-                </section>
-                
-                <!-- 侧边栏 -->
-                <aside class="md:col-span-1">
-                    <!-- 用户操作 -->
-                    <div class="bg-white shadow-lg rounded-xl p-6 mb-6">
-                        <div class="flex flex-col space-y-3">
-                            <button id="favorite-btn" class="flex items-center justify-center bg-blue-50 hover:bg-blue-100 text-blue-600 py-2 px-4 rounded transition">
-                                <i class="far fa-heart mr-2"></i> 添加收藏
-                            </button>
-                            <button id="share-btn" class="flex items-center justify-center bg-green-50 hover:bg-green-100 text-green-600 py-2 px-4 rounded transition">
-                                <i class="fas fa-share-alt mr-2"></i> 分享游戏
-                            </button>
-                            <button id="report-btn" class="flex items-center justify-center bg-gray-50 hover:bg-gray-100 text-gray-600 py-2 px-4 rounded transition">
-                                <i class="fas fa-flag mr-2"></i> 报告问题
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- 类似游戏 -->
-                    <div class="bg-white shadow-lg rounded-xl p-6">
-                        <h3 class="text-xl font-semibold text-blue-500 mb-4">类似游戏</h3>
-                        <div id="similar-games" class="space-y-4">
-                            <!-- 类似游戏将通过JS动态生成 -->
-                        </div>
-                    </div>
-                </aside>
-            </div>
-            
-            <!-- 评论区 -->
-            <section class="bg-white shadow-lg rounded-xl p-6 mt-8">
-                <h2 class="text-2xl font-semibold text-blue-500 mb-4">玩家评论</h2>
-                <div id="comments-container">
-                    <div class="mb-6">
-                        <textarea 
-                            id="comment-input" 
-                            class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                            rows="3" 
-                            placeholder="分享你的游戏体验..."
-                        ></textarea>
-                        <div class="flex justify-between items-center mt-2">
-                            <div class="rating-input flex items-center">
-                                <span class="mr-2 text-gray-600">评分:</span>
-                                <div class="flex">
-                                    <i class="far fa-star text-yellow-400 cursor-pointer hover:text-yellow-500"></i>
-                                    <i class="far fa-star text-yellow-400 cursor-pointer hover:text-yellow-500"></i>
-                                    <i class="far fa-star text-yellow-400 cursor-pointer hover:text-yellow-500"></i>
-                                    <i class="far fa-star text-yellow-400 cursor-pointer hover:text-yellow-500"></i>
-                                    <i class="far fa-star text-yellow-400 cursor-pointer hover:text-yellow-500"></i>
-                                </div>
-                            </div>
-                            <button id="submit-comment" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                                提交评论
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div id="comments-list" class="space-y-4">
-                        <!-- 评论将通过JS动态生成 -->
-                        <p class="text-gray-500 text-center">暂无评论，成为第一个评论的玩家！</p>
-                    </div>
                 </div>
-            </section>
-        </main>
-
-        <footer class="text-center mt-8 py-4 border-t">
-            <div class="mb-3">
-                <select id="language-selector" class="border rounded px-2 py-1 text-sm">
-                    <option value="zh-CN">中文</option>
-                    <option value="en-US">English</option>
-                </select>
             </div>
-            <p class="text-gray-600">
-                © <span id="current-year"></span> 游戏天地. 保留所有权利.
-            </p>
-        </footer>
-    </div>
+        </div>
+    </section>
 
-    <!-- 游戏全屏容器 -->
-    <div id="fullscreen-container" class="hidden fixed inset-0 bg-black z-50">
-        <!-- 全屏游戏内容将通过JS动态生成 -->
-    </div>
+    <!-- Gameplay Section -->
+    <section id="gameplay" class="bg-apple-gray py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Gameplay Overview</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Survive the Waves</h3>
+                    <p>Face increasingly challenging waves of monsters. Each wave brings new enemy types and greater challenges to overcome.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Upgrade & Evolve</h3>
+                    <p>Collect resources and experience to upgrade your character's abilities, unlock new weapons, and enhance your survival chances.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Strategic Combat</h3>
+                    <p>Master various weapons and abilities. Learn enemy patterns and develop strategies to survive longer and score higher.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- 模态窗口容器 -->
-    <div id="modal-container" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-        <!-- 模态窗口内容将通过JS动态生成 -->
-    </div>
+    <!-- Features Section -->
+    <section id="features" class="bg-white py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Game Features</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="bg-apple-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🎮</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">Easy Controls</h3>
+                    <p class="text-sm">Intuitive controls that anyone can master quickly</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-apple-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🔥</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">Intense Action</h3>
+                    <p class="text-sm">Non-stop action that keeps you on the edge</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-apple-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🏆</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">Leaderboards</h3>
+                    <p class="text-sm">Compete with players worldwide for high scores</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-apple-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📱</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">Cross-Platform</h3>
+                    <p class="text-sm">Play on any device, anywhere, anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- 加载各个JavaScript模块 -->
-    <script src="/js/games-db.js"></script>
-    <script src="/js/ui-components.js"></script>
-    <script src="/js/game-loader.js"></script>
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-apple-blue to-apple-light-blue text-white py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Survive?</h2>
+            <p class="text-xl mb-8">Join thousands of players in the ultimate monster survival challenge!</p>
+            <a href="#game" class="bg-white text-apple-blue px-8 py-3 rounded-full font-semibold hover:bg-apple-gray transition inline-block">
+                Start Playing Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-apple-dark text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">SelfRelianceAnd</h3>
+                    <p class="text-gray-400">Bringing you the best online gaming experiences. Play Monster Survivors and more exciting games for free!</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Game</a></li>
+                        <li><a href="#gameplay" class="text-gray-400 hover:text-white transition">Gameplay</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition">Features</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Play More Games</h3>
+                    <p class="text-gray-400 mb-4">Discover more exciting games on our platform. New games added regularly!</p>
+                    <a href="/" class="text-apple-blue hover:text-apple-light-blue transition">Browse All Games →</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 SelfRelianceAnd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Fullscreen Functionality -->
     <script>
-        // 设置当前年份
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // 获取当前游戏ID
-        const gameId = window.location.pathname.split('/').pop();
-        
-        // 页面加载完成后
-        document.addEventListener('DOMContentLoaded', function() {
-            // 加载游戏详情
-            loadGameDetails(gameId);
-            
-            // 加载导航栏
-            loadNavbar();
-            
-            // 添加游戏至最近游戏
-            addToRecentGames(gameId);
-            
-            // 初始化游戏控制
-            initGameControls();
-            
-            // 加载类似游戏
-            loadSimilarGames(gameId);
-            
-            // 加载评论
-            loadComments(gameId);
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const gameContainer = document.getElementById('gameContainer');
+        let isFullscreen = false;
+
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+        function toggleFullscreen() {
+            if (!isFullscreen) {
+                gameContainer.classList.add('fullscreen');
+                fullscreenBtn.innerHTML = '✕ Exit Fullscreen';
+                document.body.style.overflow = 'hidden';
+            } else {
+                gameContainer.classList.remove('fullscreen');
+                fullscreenBtn.innerHTML = '🖥️ Fullscreen';
+                document.body.style.overflow = 'auto';
+            }
+            isFullscreen = !isFullscreen;
+        }
+
+        // ESC key to exit fullscreen
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isFullscreen) {
+                toggleFullscreen();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
